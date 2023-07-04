@@ -1544,7 +1544,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       production: false,
       username: 'admin',
       pass: '1234',
-      host: 'http://localhost:4200/',
+      host: 'https://hashtag-poker.github.io/',
       appId: '63383898478748f5a3a0b6dbaa0d12e3'
     };
     /*
