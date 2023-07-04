@@ -1,0 +1,142 @@
+<div id="main-container">
+  <ng-container *ngIf="!loggedIn">
+    <div class="header">
+      <div class="heading">Admin Panel</div>
+    </div>
+
+    <div id="login-form">
+      <div>
+        <div style="margin-right: 10px">
+          <mat-form-field appearance="outline" class="cust-form-field">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Enter Username ..." [(ngModel)]="username">
+            <button mat-button *ngIf="username" matSuffix mat-icon-button aria-label="Clear" (click)="username=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div class="example-container">
+          <mat-form-field appearance="outline" class="cust-form-field">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+              [(ngModel)]="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; margin-bottom: 10px;">
+        <button class="cust-button" mat-flat-button (click)="login()">Sign In</button>
+      </div>
+
+    </div>
+  </ng-container>
+  <!--
+  <ng-container *ngIf="loggedIn">
+    <div class="header">
+      <div class="heading">Add Players</div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <mat-form-field appearance="outline" class="cust-form-field">
+          <mat-label>Player Name</mat-label>
+          <input matInput type="text" placeholder="Enter Username ..." [(ngModel)]="playername">
+          <button mat-button *ngIf="playername" matSuffix mat-icon-button aria-label="Clear" (click)="playername=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div style="display: flex; align-items: center;">
+        <button class="cust-button" mat-flat-button (click)="addPlayer()">Add Player</button>
+      </div>
+
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="loggedIn">
+    <div class="header">
+      <div class="heading">Player List</div>
+    </div>
+
+    <div>
+      <div *ngFor="let url of players; let i= index">
+        <div style="display: flex; margin-bottom: 10px;">
+          <div class="s-no">{{i + 1}}</div>
+          <div class="player-name">{{url}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: flex-end; margin-bottom: 10px;"
+      *ngIf= 'players.length > 0'>
+      <button class="cust-button" mat-flat-button (click)="generateurls()">Generate Urls</button>
+    </div>
+
+  </ng-container> -->
+
+  <ng-container *ngIf="loggedIn">
+    <div class="header">
+      <div class="heading">Room: {{roomname}}</div>
+    </div>
+
+    <div id="login-form">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <div style="margin-right: 10px">
+          <mat-form-field appearance="outline" class="cust-form-field">
+            <mat-label>Room Name</mat-label>
+            <input matInput type="text" placeholder="Enter Room Name ..." [(ngModel)]="roomname">
+            <button mat-button *ngIf="roomname" matSuffix mat-icon-button aria-label="room" (click)="roomname=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button class="cust-button" mat-flat-button (click)="generateurls()">Generate Urls</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="loggedIn">
+    <div class="header">
+      <div class="heading">URL List</div>
+    </div>
+
+    <div class="url-container" >
+      <div class="url-row">
+        <div style="display: flex;">
+          <div class="s-no">&nbsp;&nbsp;</div>
+          <div class="player-name">
+            <a>Player URL</a>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let url of urls; let i= index">
+        <div class="url-row" [ngStyle]="{'border-bottom':i === urls.length - 1 ? '0px solid gainsboro' : '' }">
+          <div style="display: flex;">
+            <div class="s-no">{{i + 1}}</div>
+            <div class="player-name">
+              <!-- <a>{{url}}</a> -->
+              <a href={{url}} target="_blank">{{url}}</a>
+              <p *ngIf="i >= 9" style="margin: 0px; color: maroon;" > &nbsp;&nbsp;(for production only)</p>
+            </div>
+          </div>
+          <div>
+            <mat-icon class="copy-button" title="copy to clipboard"
+            (click)= "copyToClipboard(url)">
+              content_copy
+            </mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

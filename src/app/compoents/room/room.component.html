@@ -1,0 +1,23 @@
+<ng-container *ngIf="!roomId || !playerPos">
+  <div class="invalid">Invalid URL</div>
+</ng-container>
+<ng-container *ngIf="roomId && playerPos">
+  <div id="video-wrapper">
+    <div id="agora_local_1" class="video-container"></div>
+    <div id="agora_local_2" class="video-container"></div>
+    <div id="agora_local_3" class="video-container"></div>
+    <div id="agora_local_4" class="video-container"></div>
+    <div id="agora_local_5" class="video-container"></div>
+    <div id="agora_local_6" class="video-container"></div>
+    <div id="agora_local_7" class="video-container"></div>
+    <div id="agora_local_8" class="video-container"></div>
+    <div id="agora_local_9" class="video-container"></div>
+  </div>
+
+  <div id="video-wrapper-production">
+    <div id="agora_local_10" class="video-container"></div>
+    <div id="agora_local_11" class="video-container"></div>
+    <div id="agora_local_12" class="video-container"></div>
+
+  </div>
+</ng-container>
